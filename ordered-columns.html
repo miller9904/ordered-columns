@@ -50,7 +50,7 @@
 			mutations.forEach(function(m) {
 				if(m.type === 'childList'){
 					var newArticles = [].filter.call(m.addedNodes, function(element){
-						return element.nodeName === 'ARTICLE' || (element.getAttribute && element.getAttribute('role') === 'article');
+						return element.nodeName === 'impulse-card' || (element.getAttribute && element.getAttribute('role') === 'card');
 					});
 					var hasTopItems = false;
 					newArticles.forEach(function(element){
@@ -87,19 +87,19 @@
 			var self = this;
 			this.setColumnWidths();
 			var items = [];
-			[].forEach.call(this.querySelectorAll('article,[role="article"]'), function(o){
+			[].forEach.call(this.querySelectorAll('impulse-card,[role="card"]'), function(o){
 				if(o.parentNode === self) items.push(o);
 			});
 			if(items.length===0){
 				[].forEach.call(this.children, function(o){
-					if(o.parentNode === self && (o.nodeName === 'ARTICLE' || (o.getAttribute && o.getAttribute('role') === 'article'))) items.push(o);
+					if(o.parentNode === self && (o.nodeName === 'impulse-card' || (o.getAttribute && o.getAttribute('role') === 'card'))) items.push(o);
 				});
 			}
 			this.items = items;
 			this.async(function() {
 				if(self.items.length===0){
 					var items = [];
-					[].forEach.call(self.querySelectorAll('article,[role="article"]'), function(o){
+					[].forEach.call(self.querySelectorAll('impulse-card,[role="card"]'), function(o){
 						if(o.parentNode === self) items.push(o);
 					});
 					self.items = items;
